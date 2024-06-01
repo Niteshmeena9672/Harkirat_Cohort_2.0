@@ -5,29 +5,21 @@
 */
 
 function isAnagram(str1, str2) {
-  let ans = true;
-  // Convert strings to arrays for comparison
-  let arr1 = str1.split('');
-  let arr2 = str2.split('');
-  
-  // Check if lengths are different
-  if (arr1.length !== arr2.length) {
+  // Convert both strings to lowercase
+  str1 = str1.toLowerCase();
+  str2 = str2.toLowerCase();
+
+  // If lengths don't match, they can't be anagrams
+  if (str1.length !== str2.length) {
     return false;
   }
-  
-  // Sort arrays to compare them easily
-  arr1.sort();
-  arr2.sort();
-  
-  // Compare sorted arrays
-  for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] !== arr2[i]) {
-      ans = false;
-      break;
-    }
-    
-  }
-  
-  return ans;
+
+  // Convert strings to arrays, sort them, and join them back into strings
+  str1 = str1.split('').sort().join('');
+  str2 = str2.split('').sort().join('');
+
+  // Compare the sorted strings
+  return str1 === str2;
 }
+
 module.exports = isAnagram;
